@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 
 import AuthPage from "./pages/AuthPage";
 import FeaturesPage from "./pages/FeaturesPage";
@@ -81,29 +81,32 @@ const App = () => {
         </div>
       )}
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <AuthPage
-              socket={socket}
-              typingUtils={{ emitTyping, emitStopTyping, typingUsers, setCurrentUser }}
-            />
-          }
-        />
-        <Route path="/features" element={<FeaturesPage />} />
-        <Route path="/getting-started" element={<GettingStartedPage />} />
-        <Route path="/contributing" element={<ContributingPage />} />
-        <Route path="/code-of-conduct" element={<CodeOfConductPage />} />
-        <Route path="/license" element={<LicensePage />} />
-        <Route path="/tech-stack" element={<TechStackPage />} />
-        <Route path="/documentation" element={<DocumentationPage />} />
-        <Route path="/issues" element={<IssuesPage />} />
-        <Route path="/feature-requests" element={<FeatureRequestsPage />} />
-        <Route path="/privacy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms" element={<TermsOfServicePage />} />
-        <Route path="/chat" element={<ChatPage socket={socket} />} />
-      </Routes>
+      {/* Offset for fixed navbar height */}
+      <div className="pt-16">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AuthPage
+                socket={socket}
+                typingUtils={{ emitTyping, emitStopTyping, typingUsers, setCurrentUser }}
+              />
+            }
+          />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/getting-started" element={<GettingStartedPage />} />
+          <Route path="/contributing" element={<ContributingPage />} />
+          <Route path="/code-of-conduct" element={<CodeOfConductPage />} />
+          <Route path="/license" element={<LicensePage />} />
+          <Route path="/tech-stack" element={<TechStackPage />} />
+          <Route path="/documentation" element={<DocumentationPage />} />
+          <Route path="/issues" element={<IssuesPage />} />
+          <Route path="/feature-requests" element={<FeatureRequestsPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/chat" element={<ChatPage socket={socket} />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
