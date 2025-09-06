@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 
 import AuthPage from "./pages/AuthPage";
 import FeaturesPage from "./pages/FeaturesPage";
